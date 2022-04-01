@@ -18,12 +18,13 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php($i=0)
                         @foreach($users as $user)
                             <tr>
-                                <th scope="row">1</th>
+                                <th scope="row">{{++$i}}</th>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
-                                <td>{{$user->created_at}}</td>
+                                <td>{{$user->created_at->diffForHumans()}}</td>
                             </tr>
                         @endforeach
                     </tbody>

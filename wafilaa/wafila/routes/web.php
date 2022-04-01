@@ -19,6 +19,16 @@ Route::get('/', function () {
 });
 Route::get('/categories/all', [CategoryController::class, 'AllCate'])->name('all.category');
 
+Route::get('/category/edit/{id}', [CategoryController::class, 'Edit']);
+
+Route::get('/softdelete/category/{id}', [CategoryController::class, 'SoftDelete']);
+
+Route::get('category/restore/{id}', [CategoryController::class, 'Restore']);
+
+Route::post('/category/update/{id}', [CategoryController::class, 'Update']);
+
+Route::post('/categories/add', [CategoryController::class, 'AddCat'])->name('store.category');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     $users= User::all();
     return view('dashboard', compact('users'));
